@@ -7,7 +7,7 @@
     <a href="#installation">Install</a> &middot;
     <a href="#commands">Commands</a> &middot;
     <a href="#what-it-does">What It Does</a> &middot;
-    <a href="#中文说明">中文</a>
+    <a href="./README_CN.md">中文</a>
   </p>
 </p>
 
@@ -137,59 +137,3 @@ Claude Skill Promote actively prevents common promotion mistakes:
 ## License
 
 MIT
-
----
-
-<a id="中文说明"></a>
-
-## 中文说明
-
-### 不离开终端，推广你的项目。
-
-```bash
-/promote                        # 自动检测推广对象
-/promote github                 # GitHub 开源项目推广
-/promote github readme          # README 审计
-```
-
-一个 Claude Code skill，把"我应该推广一下"变成结构化、可重复的工作流。通过子 skill 扩展支持不同推广对象。
-
-### 架构
-
-```
-promote（路由器）
-├── subs/github.md     ✅ GitHub 开源项目
-├── subs/appstore.md   🔜 App Store 应用
-├── subs/webapp.md     🔜 Web 产品 / SaaS
-└── subs/npm.md        🔜 npm/PyPI 包
-```
-
-### GitHub 推广命令
-
-| 命令 | 功能 |
-|------|------|
-| `/promote github` | 完整推广诊断 — 项目画像 + README 审计 + 渠道推荐 + 行动计划 |
-| `/promote github readme` | README 质量审计（13 项清单）并直接修复 |
-| `/promote github blog [渠道]` | 生成博文草稿（dev.to / Medium / 掘金 / V2EX / 知乎） |
-| `/promote github post [平台]` | 生成社交帖文（Twitter / HN / Reddit / V2EX） |
-| `/promote github launch` | 首发 checklist |
-| `/promote github status` | 增长指标（Stars / 流量 / 来源） |
-
-### 安装
-
-```bash
-# Plugin 市场（推荐）
-claude plugin marketplace add atompilot/claude-skill-promote
-claude plugin install claude-skill-promote@claude-skill-promote
-
-# 或手动复制
-cp -r skills/promote ~/.claude/skills/
-```
-
-### 特点
-
-- **可扩展**：通过子 skill 支持不同推广对象（GitHub / App Store / SaaS / npm）
-- **不是通用建议**：根据你的技术栈推荐具体渠道
-- **不是空白模板**：从你的代码和 README 中提取真实内容生成博文
-- **内置防坑**：不刷 star、不用营销词、不冷启动硬推
-- **中英双语**：支持全球和中文社区
