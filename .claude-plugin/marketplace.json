@@ -5,15 +5,15 @@
     "url": "https://github.com/atompilot"
   },
   "metadata": {
-    "description": "Claude Code skill for promoting your GitHub open-source projects. README audit, content generation, channel strategy, and growth tracking — all from your terminal.",
+    "description": "Claude Code skills for promoting your projects. Each promotion target (GitHub, App Store, etc.) is an independent skill.",
     "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "claude-skill-promote",
-      "description": "Promote your GitHub open-source project with structured workflows. Audit README quality, generate blog posts and social media content, execute multi-channel launch strategy, and track growth metrics. Run /promote to get started.",
+      "description": "Promote your projects with structured workflows. Currently includes GitHub open-source project promotion (README audit, content generation, channel strategy, growth tracking). Each promotion target is an independent skill — install only what you need.",
       "source": "./",
-      "skills": ["./skills/promote"]
+      "skills": ["./skills/promote-github"]
     }
   ]
 }

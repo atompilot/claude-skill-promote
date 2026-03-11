@@ -1,28 +1,41 @@
-# GitHub 开源项目推广
+---
+name: promote-github
+description: >
+  GitHub 开源项目推广工作流。README 审计与优化、内容营销生成（博文/帖文/Thread）、
+  多渠道发布策略、社区建设检查、增长指标追踪。
+  触发词：推广、promote、github 推广、宣传、marketing、star、README 优化、
+  写博文、发帖、开源推广、launch、growth、增长。
+version: 1.0.0
+source: claude-skill-promote
+license: MIT
+author: Atompilot
+keywords: ["promote", "github", "marketing", "open-source", "README", "growth", "launch"]
+---
 
-> 子 Skill：`promote/subs/github.md`
-> 父 Skill：`promote/SKILL.md`
+# Promote GitHub — 开源项目推广 Skill
+
+> 系统化推广你的 GitHub 开源项目。
 
 ---
 
 ## 触发方式
 
 ```
-/promote github                 # 完整推广诊断（首次使用推荐）
-/promote github readme          # README 质量审计 + 优化
-/promote github blog [渠道]     # 生成推广博文（dev.to / 掘金 / Medium）
-/promote github post [平台]     # 生成社交帖文（Twitter / HN / V2EX / Reddit）
-/promote github launch          # 生成首发 checklist
-/promote github status          # 查看增长指标
+/promote-github                 # 完整推广诊断（首次使用推荐）
+/promote-github readme          # README 质量审计 + 优化
+/promote-github blog [渠道]     # 生成推广博文（dev.to / 掘金 / Medium）
+/promote-github post [平台]     # 生成社交帖文（Twitter / HN / V2EX / Reddit）
+/promote-github launch          # 生成首发 checklist
+/promote-github status          # 查看增长指标
 ```
 
-也可通过父 skill 自动路由进入（检测到 GitHub 公开仓库时）。
+**ARGUMENTS**: $ARGUMENTS
 
 ---
 
 ## Phase 0: 项目感知
 
-自动收集项目信息：
+每次执行的第一步，自动收集项目信息：
 
 ```bash
 # 1. 仓库元数据
@@ -31,7 +44,7 @@ gh repo view --json name,description,stargazerCount,forkCount,createdAt,licenseI
 # 2. README
 cat README.md
 
-# 3. 技术栈（package.json / go.mod / Cargo.toml / setup.py 等）
+# 3. 技术栈
 ls package.json go.mod Cargo.toml setup.py pyproject.toml *.xcodeproj 2>/dev/null
 
 # 4. 项目年龄和活跃度
@@ -66,7 +79,7 @@ Topics：{topics}
 
 ---
 
-## 命令：完整诊断
+## 命令：`/promote-github`（完整诊断）
 
 ### Step 1: 展示项目画像
 
@@ -116,7 +129,7 @@ Topics：{topics}
 
 ---
 
-## 命令：README 审计
+## 命令：`/promote-github readme`
 
 逐项检查 README.md，每项 ✅ / ⚠️ / ❌ 评级。
 
@@ -181,7 +194,7 @@ Topics：{topics}
 
 ---
 
-## 命令：生成博文
+## 命令：`/promote-github blog [渠道]`
 
 ### 支持渠道
 
@@ -192,6 +205,8 @@ Topics：{topics}
 | `juejin` | 中文 | 技术实战 | 1500-3000 字 |
 | `v2ex` | 中文 | 口语化 | 500-1000 字 |
 | `zhihu` | 中文 | 深度分析 | 1500-3000 字 |
+
+未指定渠道时询问用户选择。
 
 ### 生成流程
 
@@ -220,7 +235,7 @@ Topics：{topics}
 
 ---
 
-## 命令：生成帖文
+## 命令：`/promote-github post [平台]`
 
 ### 各平台模板
 
@@ -270,7 +285,7 @@ Tagline + Description + Makers Comment
 
 ---
 
-## 命令：首发 Checklist
+## 命令：`/promote-github launch`
 
 ```
 🚀 首发 Checklist
@@ -300,7 +315,7 @@ Tagline + Description + Makers Comment
 
 ---
 
-## 命令：增长指标
+## 命令：`/promote-github status`
 
 ```bash
 gh repo view --json stargazerCount,forkCount,watchers,openIssues
@@ -326,15 +341,82 @@ gh api repos/{owner}/{repo}/traffic/popular/referrers
 
 ## 社区建设检查
 
-### 降低贡献门槛
-
 - [ ] CONTRIBUTING.md 存在
 - [ ] 有 `good first issue` 标签
 - [ ] Issue/PR 模板已配置
 - [ ] 回复 issue 平均 < 24h
-
-### 生态集成
-
-- [ ] 在相关工具/框架中提供集成示例
-- [ ] README 展示"谁在用"
 - [ ] 被 awesome list 收录
+
+---
+
+## 避坑指南
+
+| 陷阱 | 为什么 | 替代方案 |
+|------|--------|---------|
+| 刷 star | GitHub 检测 + 虚假 star 无价值 | 靠内容和社区自然增长 |
+| 营销词 | 技术社区反感 | 用事实和数据说话 |
+| 冷启动硬推 | 社区反感广告 | 先贡献价值，再自然提及 |
+| 只发一次 | 推广是持续行为 | 按节奏持续输出 |
+| 一稿多投 | 各平台风格不同 | 按平台定制内容 |
+| 忽略反馈 | 不回复 = 无人维护 | 48h 内回复所有评论 |
+
+---
+
+## 内容存储
+
+```
+docs/promote/
+├── blog/                    # 博文草稿
+│   ├── devto-2026-03-11.md
+│   └── juejin-2026-03-11.md
+├── posts/                   # 社交帖文
+│   ├── twitter-2026-03-11.md
+│   └── hn-2026-03-11.md
+└── status-log.md            # 增长记录
+```
+
+首次运行时自动创建目录：`mkdir -p docs/promote/{blog,posts}`
+
+---
+
+## 自我进化协议
+
+> 本 skill 在日常使用中自动进化。无需显式触发。
+
+### 何时提议进化
+
+| 信号 | 示例 | 行为 |
+|------|------|------|
+| 用户发现新有效渠道 | "在 {社区} 发帖效果很好" | 提议加入渠道矩阵 |
+| 渠道规则变化 | "HN 不允许 Show HN 带 emoji" | 提议更新对应模板 |
+| 用户纠正内容风格 | "V2EX 不要这么正式" | 提议调整风格指南 |
+| 新平台涌现 | 用户提到 Bluesky / 小红书 | 提议新增平台模板 |
+
+### 确认流程
+
+```
+🔔 我注意到一个可以写入 skill 的改进：
+
+{描述}
+
+建议写入：promote-github/SKILL.md 的「{章节名}」
+内容预览：
+---
+{内容}
+---
+
+是否写入？(Y/N)
+```
+
+写入后 version patch +1。
+
+### Size Guard
+
+**守护线**：≤ 15KB
+
+- > 12KB → 写入前警告
+- > 15KB → 必须先压缩再写入
+
+### 侧重点
+
+> 新渠道发现、推广效果反馈、内容模板优化、平台规则变更。
