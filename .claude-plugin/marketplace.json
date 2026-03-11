@@ -1,0 +1,19 @@
+{
+  "name": "claude-skill-promote",
+  "owner": {
+    "name": "Atompilot",
+    "url": "https://github.com/atompilot"
+  },
+  "metadata": {
+    "description": "Claude Code skill for promoting your GitHub open-source projects. README audit, content generation, channel strategy, and growth tracking — all from your terminal.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "claude-skill-promote",
+      "description": "Promote your GitHub open-source project with structured workflows. Audit README quality, generate blog posts and social media content, execute multi-channel launch strategy, and track growth metrics. Run /promote to get started.",
+      "source": "./",
+      "skills": ["./skills/promote"]
+    }
+  ]
+}
